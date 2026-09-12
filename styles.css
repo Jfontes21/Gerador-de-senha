@@ -1,0 +1,245 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f1ea;
+  --ink: #1c1914;
+  --muted: #5c564c;
+  --card: #fffcf6;
+  --line: #e2dbcf;
+  --accent: #2f5d50;
+  --accent-ink: #f7fff9;
+  --fill-weak: #c45c4a;
+  --fill-mid: #c48a2a;
+  --fill-strong: #3d7a4c;
+  --fill-best: #2f5d50;
+  --shadow: 0 12px 40px rgba(28, 25, 20, 0.08);
+  --sans: "Segoe UI", system-ui, sans-serif;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #161410;
+  --ink: #f3eee4;
+  --muted: #b7b0a4;
+  --card: #211d18;
+  --line: #3a342c;
+  --accent: #8fcebb;
+  --accent-ink: #12211c;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #161410;
+    --ink: #f3eee4;
+    --muted: #b7b0a4;
+    --card: #211d18;
+    --line: #3a342c;
+    --accent: #8fcebb;
+    --accent-ink: #12211c;
+    --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+h1,
+h2 {
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 1.1rem;
+}
+
+.lede,
+.hint,
+.status,
+.strength p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.lede {
+  max-width: 36rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.password-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+}
+
+@media (min-width: 720px) {
+  .password-row {
+    grid-template-columns: 1fr auto auto auto;
+  }
+}
+
+input[type="text"],
+input[type="range"] {
+  width: 100%;
+}
+
+input[type="text"] {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 1.05rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+button {
+  font: inherit;
+  border-radius: 10px;
+  padding: 0.7rem 0.95rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+button:hover {
+  opacity: 0.92;
+}
+
+.strength {
+  margin-top: 1rem;
+}
+
+.strength-bar {
+  height: 8px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.45rem;
+}
+
+.strength-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.options .field {
+  margin-bottom: 1.1rem;
+}
+
+.field-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.number {
+  width: 4.5rem;
+  font: inherit;
+  text-align: right;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin: 0 0 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.check {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  margin: 0.35rem 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+}
+
+.item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding: 0.65rem 0;
+  font-family: ui-monospace, Consolas, monospace;
+  word-break: break-all;
+}
+
+.item button {
+  flex-shrink: 0;
+  padding: 0.4rem 0.7rem;
+}
+
+.status {
+  min-height: 1.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.hint {
+  font-size: 0.9rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}

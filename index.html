@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gerador de senha</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="top">
+        <div>
+          <h1>Gerador de senha</h1>
+          <p class="lede">Senhas aleatórias no seu navegador. Nada é enviado a um servidor.</p>
+        </div>
+        <button type="button" class="ghost" id="theme-toggle" aria-label="Alternar tema">Tema</button>
+      </header>
+
+      <section class="card">
+        <label class="sr-only" for="password">Senha gerada</label>
+        <div class="password-row">
+          <input id="password" type="text" readonly spellcheck="false" placeholder="Clique em Gerar" />
+          <button type="button" class="primary" id="generate">Gerar</button>
+          <button type="button" class="ghost" id="regenerate">Regenerar</button>
+          <button type="button" class="ghost" id="copy">Copiar</button>
+        </div>
+        <p class="status" id="copy-status" aria-live="polite"></p>
+
+        <div class="strength">
+          <div class="strength-bar" aria-hidden="true">
+            <span id="strength-fill"></span>
+          </div>
+          <p id="strength-label">Força: —</p>
+        </div>
+      </section>
+
+      <section class="card options">
+        <div class="field">
+          <div class="field-head">
+            <label for="length-value">Tamanho</label>
+            <input
+              id="length-value"
+              class="number"
+              type="number"
+              min="8"
+              max="64"
+              value="16"
+              inputmode="numeric"
+            />
+          </div>
+          <input id="length" type="range" min="8" max="64" value="16" />
+        </div>
+
+        <fieldset>
+          <legend>Conjuntos</legend>
+          <label class="check"><input type="checkbox" id="lower" checked /> Minúsculas (a–z)</label>
+          <label class="check"><input type="checkbox" id="upper" checked /> Maiúsculas (A–Z)</label>
+          <label class="check"><input type="checkbox" id="digits" checked /> Números (0–9)</label>
+          <label class="check"><input type="checkbox" id="symbols" /> Símbolos (!@#$…)</label>
+        </fieldset>
+        <p class="hint" id="charset-hint"></p>
+
+        <div class="field">
+          <div class="field-head">
+            <label for="count-value">Quantidade</label>
+            <input
+              id="count-value"
+              class="number"
+              type="number"
+              min="1"
+              max="10"
+              value="1"
+              inputmode="numeric"
+            />
+          </div>
+          <input id="count" type="range" min="1" max="10" value="1" />
+        </div>
+      </section>
+
+      <section class="card" id="batch-card" hidden>
+        <h2>Senhas geradas</h2>
+        <ul id="batch-list"></ul>
+      </section>
+
+      <section class="card">
+        <div class="field-head">
+          <h2>Histórico</h2>
+          <button type="button" class="ghost" id="clear-history">Limpar tudo</button>
+        </div>
+        <p class="hint">As últimas 15 senhas ficam só neste navegador.</p>
+        <ul id="history-list"></ul>
+      </section>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
